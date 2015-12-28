@@ -1,0 +1,4 @@
+-r base.txt # includes the base.txt requirements file
+
+coverage==4.0.3
+django-jenkins==0.18.1

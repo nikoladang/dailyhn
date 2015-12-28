@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings.dev_nikola")
 
 application = get_wsgi_application()
