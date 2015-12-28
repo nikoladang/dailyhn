@@ -8,9 +8,15 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 """
 
 import os
+import socket, re
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings.dev_nikola")
+hostname = socket.gethostname()
+ip = socket.gethostbyname(hostname)
+if re.match("^192\.168.*$",ip):
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings.dev_nikola")
+else:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings.production")
 
 application = get_wsgi_application()
