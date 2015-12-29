@@ -14,12 +14,13 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'news.views.newsapi_home', name="newsapi_home"),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^news/$', 'news.views.newsapi_home', name="newsapi_home"),
     url(r'^news/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', 'news.views.newsapi_home_adate', name="newsapi_home_adate"),
 ]

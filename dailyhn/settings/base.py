@@ -51,6 +51,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # third-party apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    # my apps
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -136,3 +143,29 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# django-allauth
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+SITE_ID = 1
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {   'METHOD': 'oauth2',
+                    'SCOPE': ['email', 'public_profile', 'user_friends'],
+                    'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+                    'FIELDS': [
+                    'id',
+                    'email',
+                    'name',
+                    'first_name',
+                    'last_name',
+                    'friends'],
+                'VERSION': 'v2.4'
+   }
+}
