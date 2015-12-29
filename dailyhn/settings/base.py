@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     # my apps
+    'news',
 ]
 
 MIDDLEWARE_CLASSES = [

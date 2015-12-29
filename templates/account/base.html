@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+
+<div class="responsive-container align-center">
+            <div class="nice-box inline-block">
+                <h1 class="dark">Log In to HackerEarth Academy</h1>
+
+                <div class="sign-up-form-container inline-block v-middle align-left">
+
+
+                    <!-- signup form -->
+                    <form class="login" method="POST">
+                        <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="ajjFJY7Usv9z2awvQB44Zl85WtSUjvrx"></div>
+
+
+
+                        <div class="profile-wrapper">
+                            <input type="text" placeholder="Username or e-mail" name="login" id="id_login">
+
+                            <i class="fa fa-user light"></i>
+                        </div>
+                        <div class="profile-wrapper">
+                            <input type="password" placeholder="Password" name="password" id="id_password">
+
+                            <i class="fa fa-lock light"></i>
+                        </div>
+                        <a href="/accounts/password/reset/" class="foot-note float-right small">Forgot password?</a>
+                        <div class="clear"></div>
+                        <input class="sign-up-btn-alt btn-blue full-width standard-margin weight-700" type="submit" name="signin" value="Log In">
+                        <div class="dark small less-margin align-right">
+                            Don't have an account? <a href="/accounts/signup/">Sign Up</a>
+                        </div>
+                    </form>
+                </div><!-- end sign-up-form-container -->
+                <div class="sign-up-container inline-block v-middle">
+                        <a class="sign-up-btn btn-orange large-20 weight-700 full-width track-fb-signup" href="/accounts/facebook/login/?next=%2Fusers%2Fprofile%2F">
+                            <div class="btn-icon float-left"><i class="fa fa-facebook"></i></div>
+                            <div class="btn-text float-left">Log In with Facebook</div>
+                            <div class="clear"></div>
+                        </a>
+
+                        <a class="sign-up-btn btn-orange large-20 weight-700 full-width track-github-signup" href="/accounts/github/login/?next=%2Fusers%2Fprofile%2F">
+                            <div class="btn-icon float-left"><i class="fa fa-github"></i></div>
+                            <div class="btn-text float-left">Log In with Github</div>
+                            <div class="clear"></div>
+                        </a>
+
+                        <a class="sign-up-btn btn-orange large-20 weight-700 full-width track-fb-signup" href="/accounts/google/login/?next=%2Fusers%2Fprofile%2F">
+                            <div class="btn-icon float-left"><i class="fa fa-google-plus"></i></div>
+                            <div class="btn-text float-left">Log In with Google</div>
+                            <div class="clear"></div>
+                        </a>
+                    </div><!-- end sign-up-container -->
+                <div class="clear-both"> </div>
+            </div> <!-- end nice-box -->
+        </div>

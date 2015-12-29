@@ -1,0 +1,42 @@
+#social_login > a {
+	margin: 0 3px;
+
+	width: 36px;
+	height: 36px;
+
+	text-align: center;
+	line-height: 36px;
+
+	color: #fff;
+	font-size: 30px;
+
+	position: relative;
+
+/* 	transition: background-color 0.3s linear, border-color 0.3s linear; */
+}
+
+#social_login i {
+    width: 18px;
+    height: 18px;
+}
+
+
+#social_login .vk { background: #587ea3; }
+#social_login .vk:hover, #social_login .vk:focus, #social_login .vk:active { background: #466482; }
+#social_login .vk > span { position: absolute; left: 6px; top: 8px; }
+
+#social_login .facebook { background: #3b5998; }
+#social_login .facebook:hover, #social_login .facebook:focus, #social_login .facebook:active { background: #2d4373; }
+#social_login .facebook > span { position: absolute; left: 18px; top: 12px; font-size: 38px; }
+
+#social_login .twitter { background: #55acee; }
+#social_login .twitter:hover, #social_login .twitter:focus, #social_login .twitter:active { background: #2795e9; }
+#social_login .twitter > span { position: absolute; left: 9px; top: 10px; }
+
+#social_login .google { background: #dd4b39; }
+#social_login .google:hover, #social_login .google:focus, #social_login .google:active { background: #c23321; }
+#social_login .google > span { position: absolute; left: 12px; top: 12px; }
+
+#social_login .yandex { background: #e52019; }
+#social_login .yandex:hover, #social_login .yandex:focus, #social_login .yandex:active { background: #d21d16; }
+#social_login .yandex > span { position: absolute; left: 16px; top: 10px; background: url('../images/ya.png') no-repeat; width: 100%; height: 100%; }

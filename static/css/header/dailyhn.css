@@ -1,0 +1,115 @@
+/*footer {*/
+	/*border-top: 1px solid #bbbbbb;*/
+    /*margin-top: 40px;*/
+	/*padding-top: 20px;*/
+    /*padding-bottom: 20px;*/
+	/*font-size: 75%;*/
+/*}*/
+
+/*footer .like-buttons {*/
+    /*width: 100%;*/
+/*}*/
+
+.like-buttons > div {
+    float: left;
+    margin-right: 20px;
+}
+
+p {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.intro-first-run-button {
+  animation: blink 400ms alternate infinite;
+  -webkit-animation: blink 400ms alternate infinite;
+}
+
+@keyframes blink {
+  to {
+    box-shadow: 0 0 0 3px red;
+  }
+}
+@-webkit-keyframes blink {
+  to {
+    box-shadow: 0 0 0 3px red;
+  }
+}
+
+
+
+.intro-wrong-stdout {
+  animation: wrong-stdout 400ms alternate 2;
+  -webkit-animation: wrong-stdout 400ms alternate 2;
+}
+
+@keyframes wrong-stdout {
+  to {
+    background-color: pink;
+  }
+}
+@-webkit-keyframes wrong-stdout {
+  to {
+    background-color: pink;
+  }
+}
+
+
+
+.intro-right-stdout {
+  animation: right-stdout 400ms alternate 2;
+  -webkit-animation: right-stdout 400ms alternate 2;}
+
+@keyframes right-stdout {
+  to {
+    background-color: lightgreen;
+  }
+}
+@-webkit-keyframes right-stdout {
+  to {
+    background-color: lightgreen;
+  }
+}
+
+
+
+.intro-some-stdout {
+  animation: some-stdout 400ms alternate 2;
+  -webkit-animation: some-stdout 400ms alternate 2;
+}
+
+@keyframes some-stdout {
+  to {
+    background-color: yellow;
+  }
+}
+@-webkit-keyframes some-stdout {
+  to {
+    background-color: yellow;
+  }
+}
+
+
+
+.blinking-first-lesson {
+  animation: blinking-first-lesson-anim 600ms alternate infinite;
+  -webkit-animation: blinking-first-lesson-anim 600ms alternate infinite;
+}
+
+@keyframes blinking-first-lesson-anim {
+  to {
+    box-shadow: inset 0 0 4px 4px red;
+  }
+}
+@-webkit-keyframes blinking-first-lesson-anim {
+  to {
+    box-shadow: inset 0 0 4px 4px red;
+  }
+}
+
+
+
+.navbar {
+    background-color: #effbee;
+    box-shadow: 0 0 1px 0px #0cb500, 0 0 2px 0px #12FF01;
+}
