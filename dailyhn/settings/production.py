@@ -2,6 +2,8 @@ from .base import *
 
 DEBUG = False
 
+ALLOWED_HOSTS = ["dailyhn.phanthietfood.com","www.dailyhn.phanthietfood.com"]
+
 STATIC_ROOT = "/webapps/dailyhn_django/static/"
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -191,14 +191,15 @@
 {#            </table>#}
 {#          </div>#}
 
-            {% with baseurl="https://news.ycombinator.com/item?id=" %}
-            {% for element in result %}
+                    {% with baseurl="https://news.ycombinator.com/item?id=" %}
+                    {% for element in result %}
           <h2 class="sub-header">{{ element.hnDate }}</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
 {#                  <th>#</th>#}
+                  <th class="text-center"><i class="fa fa-book"></i></th>
                   <th class="text-center">Title</th>
                   <th class="text-center">Comments</th>
 {#                  <th>Header</th>#}
@@ -210,15 +211,17 @@
 {#                            {{ item }}#}
 {#                            {{ item.Date }}#}
                             <tr>
-                                <td><a href="{{ item.url }}" target='_blank'>{{ item.title }}</a><br/></td>
-                                <td><a href="{{ baseurl }}{{ item.objectID }}" target='_blank'>(comments)</a><br/></td>
+{#                                <td class="text-center"><a href="#" target='_blank'><i class="fa fa-bookmark-o" style="color: red"></i></a></td>#}
+                                <td class="text-center"><a href="#" target='_blank'><i class="fa fa-bookmark" style="color: red"></i></a></td>
+                                <td><a href="{{ item.url }}" target='_blank'>{{ item.title }}</a></td>
+                                <td><a href="{{ baseurl }}{{ item.objectID }}" target='_blank'>(comments)</a></td>
                             </tr>
                         {% endfor %}
               </tbody>
             </table>
           </div>
-                            {% endfor %}
-                        {% endwith %}
+                    {% endfor %}
+                    {% endwith %}
 
 
         </div>

@@ -1,3 +1,4 @@
 -r base.txt # includes the base.txt requirements file
 
 gunicorn==19.4.1
+setproctitle==1.1.9
