@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class SavedEmbed(models.Model):
@@ -16,3 +18,13 @@ class SavedEmbed(models.Model):
     author_url = models.URLField()
     author_name = models.CharField(max_length=100)
     version = models.DecimalField(max_digits=4, decimal_places=2)
+
+
+class UserProfile():
+    user = models.OneToOneField(User, related_name='profile')
+
+    def __str__(self):
+        return "{0}'s profile".format(self.user.username)
+
+    class Meta:
+        db_table = 'user_profile'

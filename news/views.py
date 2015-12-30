@@ -5,6 +5,7 @@ from datetime import datetime, date, timedelta
 from operator import itemgetter
 # import json
 from .sidebar import get_sidebarDates
+from allauth.socialaccount.models import SocialAccount
 
 # Create your views here.
 # from .forms import SubmitEmbed
@@ -85,3 +86,21 @@ def newsapi_home_adate(request, year, month, day):
         "result": resultList
     }
     return render(request, "news/home2.html", context)
+
+def get_profile(request):
+    if request.user.is_authenticated():
+        print("OK")
+        x = request.user.socialaccount_set.all()
+        print(x)
+        for value in x.iterator():
+            print(value)
+
+    context = {
+        "": "",
+    }
+
+    return render(request, "profile.html", context)
+
+
+
+
