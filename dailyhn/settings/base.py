@@ -155,8 +155,6 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 SITE_ID = 1
-
-
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {   'METHOD': 'oauth2',
                     'SCOPE': ['email', 'public_profile', 'user_friends'],
