@@ -104,8 +104,10 @@
 			<div class="navbar-collapse collapse">
                 {% if request.user.is_authenticated %}
                     <div class="navbar-right" style="margin-top: 5px; margin-bottom: 5px;">
-                        You logged in as <span class="glyphicon glyphicon-user"></span> {{ request.user.first_name }} {{ request.user.last_name }}
-                        <a href="/accounts/logout/">Log out</a>
+{#                        You logged in as <span class="glyphicon glyphicon-user"></span> {{ request.user.first_name }} {{ request.user.last_name }}#}
+{#                        <a href="/accounts/logout/">Log out</a>#}
+{#                        <img src="{{ profile_image_url }}" alt="">{{ user.first_name }} {{ user.last_name }} | <a href="/accounts/logout/">Log out</a>#}
+                        <a href="{{ user_profile }}"><img src="{{ profile_image_url }}" alt=""> {{ user.first_name }} {{ user.last_name }}</a> | <a href="/accounts/logout/">Log out</a>
                     </div>
                 {% else %}
                     <div class="navbar-right" style="margin-top: 5px; margin-bottom: 5px;">

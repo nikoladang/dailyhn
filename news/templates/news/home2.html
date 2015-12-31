@@ -3,7 +3,8 @@
 
     {% block head_title %}dailyhn.com{% endblock %}
     {% block extra_head %}
-        <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+        <link href="{% static 'news/css/dashboard.css' %}" rel="stylesheet">
+        <link href="{% static 'news/css/news.css' %}" rel="stylesheet">
         <script src="{% static 'js/holder.min.js' %}"></script>
     {% endblock %}
 
@@ -199,7 +200,8 @@
               <thead>
                 <tr>
 {#                  <th>#</th>#}
-                  <th class="text-center"><i class="fa fa-book"></i></th>
+{#                  <th class="text-center"><i class="fa fa-book"></i></th>#}
+                  <th class="text-center" id="animated-gif-container"></th>
                   <th class="text-center">Title</th>
                   <th class="text-center">Comments</th>
 {#                  <th>Header</th>#}

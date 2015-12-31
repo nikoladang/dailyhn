@@ -6,6 +6,7 @@ from operator import itemgetter
 # import json
 from .sidebar import get_sidebarDates
 from allauth.socialaccount.models import SocialAccount
+import hashlib
 
 # Create your views here.
 # from .forms import SubmitEmbed
@@ -87,16 +88,21 @@ def newsapi_home_adate(request, year, month, day):
     }
     return render(request, "news/home2.html", context)
 
+
 def get_profile(request):
+    profile_image_url = ""
     if request.user.is_authenticated():
-        print("OK")
-        x = request.user.socialaccount_set.all()
-        print(x)
-        for value in x.iterator():
-            print(value)
+        # print(request.user.id)
+        fb_uid = SocialAccount.objects.filter(user_id=request.user.id, provider='facebook')
+        if len(fb_uid):
+            profile_image_url = "http://graph.facebook.com/{}/picture?width=35&height=35".format(fb_uid[0].uid)
+        else:
+            email_hash = hashlib.md5(request.user.email.strip().lower().encode('utf-8')).hexdigest()
+            profile_image_url = "http://www.gravatar.com/avatar/%s" % email_hash + "?s=350&d=identicon&r=PG"
+
 
     context = {
-        "": "",
+        "profile_image_url": profile_image_url,
     }
 
     return render(request, "profile.html", context)
