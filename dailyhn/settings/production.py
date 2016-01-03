@@ -5,6 +5,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["dailyhn.phanthietfood.com","www.dailyhn.phanthietfood.com"]
 
 STATIC_ROOT = "/webapps/dailyhn_django/static/"
+MEDIA_ROOT = "/webapps/dailyhn_django/media/"
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'

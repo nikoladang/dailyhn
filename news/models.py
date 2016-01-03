@@ -20,11 +20,11 @@ class SavedEmbed(models.Model):
     version = models.DecimalField(max_digits=4, decimal_places=2)
 
 
-class UserProfile():
-    user = models.OneToOneField(User, related_name='profile')
-
-    def __str__(self):
-        return "{0}'s profile".format(self.user.username)
-
-    class Meta:
-        db_table = 'user_profile'
+# class UserProfile():
+#     user = models.OneToOneField(User, related_name='profile')
+#
+#     def __str__(self):
+#         return "{0}'s profile".format(self.user.username)
+#
+#     class Meta:
+#         db_table = 'user_profile'

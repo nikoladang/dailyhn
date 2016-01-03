@@ -146,6 +146,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+MEDIA_URL = '/media/'
+
 # django-allauth
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -170,7 +172,7 @@ SOCIALACCOUNT_PROVIDERS = {
    }
 }
 # AUTH_USER_MODEL = 'user.CustomUser'
-AUTH_USER_MODEL = 'user.MyUser'
+# AUTH_USER_MODEL = 'user.MyUser'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_USERNAME_REQUIRED = False
