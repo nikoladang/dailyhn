@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 # from django.views.generic.simple import direct_to_template
 
 urlpatterns = [
@@ -25,4 +27,9 @@ urlpatterns = [
     url(r'^accounts/profile/', 'news.views.get_profile', name="user_profile"),
     url(r'^news/$', 'news.views.newsapi_home', name="newsapi_home"),
     url(r'^news/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', 'news.views.newsapi_home_adate', name="newsapi_home_adate"),
+    url(r'^user/', include('user.urls'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
