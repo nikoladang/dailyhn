@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["dailyhn.phanthietfood.com","www.dailyhn.phanthietfood.com"]
+ALLOWED_HOSTS = ["www.dailyhn.com","dailyhn.com","dailyhn.phanthietfood.com","www.dailyhn.phanthietfood.com"]
 
 STATIC_ROOT = "/webapps/dailyhn_django/static/"
 MEDIA_ROOT = "/webapps/dailyhn_django/media/"
