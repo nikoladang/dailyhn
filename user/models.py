@@ -84,7 +84,7 @@ class MyUser(AbstractBaseUser):
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     date_of_birth = models.DateField(blank=True, null=True)
-    photo = models.ImageField(upload_to='users/%Y/%m/%d')
+    photo = models.ImageField(upload_to='user/%Y/%m/%d')
 
     def __str__(self):
         return ""
