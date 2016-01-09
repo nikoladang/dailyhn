@@ -11,6 +11,7 @@ import os
 import socket, re
 
 from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
 
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
@@ -20,3 +21,4 @@ else:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings.production")
 
 application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
