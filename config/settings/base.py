@@ -91,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'dailyhn.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database

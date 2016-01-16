@@ -16,9 +16,9 @@ from whitenoise.django import DjangoWhiteNoise
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 if re.match("^192\.168.*$",ip):
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings.dev_nikola")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.dev_nikola")
 else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyhn.settings.production")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
 
 application = get_wsgi_application()
 application = DjangoWhiteNoise(application)
