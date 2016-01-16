@@ -73,7 +73,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'dailyhn.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
