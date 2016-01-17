@@ -24,9 +24,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'news.views.newsapi_home', name="newsapi_home"),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^accounts/profile/', 'news.views.get_profile', name="user_profile"),
-    url(r'^news/$', 'news.views.newsapi_home', name="newsapi_home"),
-    url(r'^news/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', 'news.views.newsapi_home_adate', name="newsapi_home_adate"),
+    # url(r'^accounts/profile/', 'news.views.get_profile', name="user_profile"),
+    url(r'^profile/$', 'news.views.get_profile', name="user_profile"),
+    url(r'^news/', include('news.urls')),
     url(r'^user/', include('user.urls'))
 ]
 

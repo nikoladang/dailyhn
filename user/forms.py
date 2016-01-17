@@ -27,7 +27,7 @@ from .models import Profile
 #     username = forms.CharField()
 #     password = forms.CharField(widget=forms.PasswordInput)
 
-
+#http://localhost:8000/accounts/signup/
 class SignupForm(forms.ModelForm):
     class Meta:
         model = Profile

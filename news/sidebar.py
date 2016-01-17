@@ -11,19 +11,21 @@ def date_to_dict(adate):
 
     return dict
 
-def get_sidebarDates(year, month, day):
+def get_sidebarDates(year, month, day, daysGap=3):
+    print("daysGap="+str(daysGap))
     inputDate = datetime(int(year),int(month),int(day))
     curDate = datetime.now().date()
     sidebarDates = []
 
-    for i in reversed(range(1,4)):
+    endRange = daysGap + 1
+    for i in reversed(range(1,endRange)):
         newDate = inputDate+timedelta(days=i)
         if newDate.date() <= curDate-timedelta(days=1):
             sidebarDates.append(date_to_dict(newDate))
 
     sidebarDates.append(date_to_dict(inputDate))
 
-    for i in range(1,4):
+    for i in range(1,endRange):
         newDate = inputDate-timedelta(days=i)
         sidebarDates.append(date_to_dict(newDate))
 
