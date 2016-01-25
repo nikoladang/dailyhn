@@ -57,9 +57,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'autofixture',
     # my apps
     'news',
     'user',
+    'entry',
 ]
 
 MIDDLEWARE_CLASSES = [
