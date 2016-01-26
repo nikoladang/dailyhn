@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     # url(r'^accounts/profile/', 'news.views.get_profile', name="user_profile"),
     url(r'^profile/$', 'news.views.get_profile', name="user_profile"),
-    url(r'^news/', include('news.urls')),
+    url(r'^news/', include('news.urls_news')),
     url(r'^user/', include('user.urls'))
 ]
 
