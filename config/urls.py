@@ -22,11 +22,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', 'news.views.newsapi_home', name="newsapi_home"),
+    url(r'^$', 'dailyhn.views.newsapi_home', name="newsapi_home"),
     url(r'^accounts/', include('allauth.urls')),
-    # url(r'^accounts/profile/', 'news.views.get_profile', name="user_profile"),
-    url(r'^profile/$', 'news.views.get_profile', name="user_profile"),
-    url(r'^news/', include('news.urls_news')),
+    # url(r'^accounts/profile/', 'dailyhn.views.get_profile', name="user_profile"),
+    url(r'^profile/$', 'dailyhn.views.get_profile', name="user_profile"),
+    url(r'^news/', include('dailyhn.urls.urls_news')),
     url(r'^user/', include('user.urls'))
 ]
 

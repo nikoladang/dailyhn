@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class NewsConfig(AppConfig):
-    name = 'news'
+    name = 'dailyhn'
     verbose_name = "Daily Hacker News"

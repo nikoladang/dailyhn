@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'autofixture',
     # my apps
-    'news',
+    'dailyhn',
     'user',
     'entry',
 ]
