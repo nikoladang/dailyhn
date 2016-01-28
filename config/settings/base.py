@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     # my apps
     'dailyhn',
     'user',
-    'entry',
 ]
 
 MIDDLEWARE_CLASSES = [
