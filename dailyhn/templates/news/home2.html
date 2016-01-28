@@ -202,6 +202,7 @@
 {#                  <th>#</th>#}
 {#                  <th class="text-center"><i class="fa fa-book"></i></th>#}
                   <th class="text-center" id="animated-gif-container"></th>
+                    <th class="text-center">Points</th>
                   <th class="text-center">Title</th>
                   <th class="text-center">Comments</th>
 {#                  <th>Header</th>#}
@@ -215,6 +216,7 @@
                             <tr>
 {#                                <td class="text-center"><a href="#" target='_blank'><i class="fa fa-bookmark-o" style="color: red"></i></a></td>#}
                                 <td class="text-center"><a href="#" target='_blank'><i class="fa fa-bookmark" style="color: red"></i></a></td>
+                                <td class="text-center">{{ item.points }}</td>
                                 <td><a href="{{ item.url }}" target='_blank'>{{ item.title }}</a></td>
                                 <td><a href="{{ baseurl }}{{ item.objectID }}" target='_blank'>(comments)</a></td>
                             </tr>

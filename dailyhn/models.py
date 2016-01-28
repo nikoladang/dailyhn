@@ -19,7 +19,7 @@ class Entry(models.Model):
 
 
 class Bookmark(models.Model):
-    user = models.ManyToManyField(User, default="nikola")
+    user = models.ManyToManyField(User, default="nikola", editable=False)
     entry = models.ManyToManyField(Entry)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
 

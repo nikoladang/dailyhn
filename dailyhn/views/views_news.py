@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.conf import settings
+# from django.conf import settings
 import requests
 from datetime import datetime, date, timedelta
 from operator import itemgetter
 # import json
-from .sidebar import get_sidebarDates
+from dailyhn.sidebar import get_sidebarDates
 from allauth.socialaccount.models import SocialAccount
 import hashlib
 
@@ -98,7 +98,7 @@ def get_profile(request):
             profile_image_url = "http://graph.facebook.com/{}/picture?width=35&height=35".format(fb_uid[0].uid)
         else:
             email_hash = hashlib.md5(request.user.email.strip().lower().encode('utf-8')).hexdigest()
-            profile_image_url = "http://www.gravatar.com/avatar/%s" % email_hash + "?s=350&d=identicon&r=PG"
+            profile_image_url = "http://www.gravatar.com/avatar/%s" % email_hash + "?s=35&d=identicon&r=PG"
 
 
     context = {
