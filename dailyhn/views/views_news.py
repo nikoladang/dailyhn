@@ -12,7 +12,8 @@ import hashlib
 # from .forms import SubmitEmbed
 # from .serializer import EmbedSerializer
 
-def get_story(timestamp1, timestamp2):
+
+def get_stories(timestamp1, timestamp2):
     # url = 'http://hn.algolia.com/api/v1/search_by_date?tags=story&numericFilters=created_at_i>'+str(timestamp1)+',created_at_i<'+str(timestamp2)
     url = 'http://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=2000&numericFilters=created_at_i>{0},created_at_i<{1}'.format(str(timestamp1), str(timestamp2))
     r = requests.get(url)
@@ -24,6 +25,7 @@ def get_story(timestamp1, timestamp2):
     result = jsonResult1['hits']
     return result
 
+
 '''
 Get top stories from HN with highests points in a specific day
 Return: dict
@@ -31,7 +33,7 @@ Return: dict
 def get_top_stories_single_day(year, month, day, story_count=10):
     begintime = datetime(year,month,day-1).timestamp()
     endtime = datetime(year,month,day-1,23,59,59).timestamp()
-    aList = get_story(begintime,endtime)
+    aList = get_stories(begintime,endtime)
     sortedHnValueList = sorted(aList, key=itemgetter('points'), reverse=True)[:story_count]
     dictResult = {}
     # newdict['hnDate'] = datetime.fromtimestamp(date1).strftime('%Y-%d-%m')

@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'autofixture',
+    # 'autofixture',
+    'django_crontab',
     # my apps
     'dailyhn',
     'user',
@@ -104,7 +105,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -184,3 +184,9 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.SignupForm'
 
 # WhiteNoise
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+# django-crontab --> crontab add ; crontab show ; crontab remove
+CRONJOBS = [
+    # ('*/5 * * * *', 'dailyhn.cron.my_scheduled_job2', '>> ~/my_scheduled_job.log'), # executed by cron every 1 minutes
+    ('*/1 * * * *', 'dailyhn.cron.entries_single_day_cron', '>> ~/my_scheduled_job2.log') # executed by cron every 1 minutes
+]

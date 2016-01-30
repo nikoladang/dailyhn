@@ -3,11 +3,13 @@ from django.contrib.auth.models import User
 
 
 class Entry(models.Model):
-    date = models.DateField()
-    points = models.IntegerField()
+    date = models.DateField() # datetime.date instance
+    points = models.IntegerField(default=0)
     title = models.CharField(max_length=255)
-    url = models.URLField()
-    n_bookmarks = models.IntegerField(verbose_name="Bookmarks")
+    article_url = models.URLField()
+    comment_url = models.URLField()
+    n_bookmarks = models.IntegerField(verbose_name="Bookmarks", default=0)
+    active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -16,12 +18,21 @@ class Entry(models.Model):
 
     class Meta:
         verbose_name_plural = "Entries"
+        unique_together = ('date', 'title')
 
 
 class Bookmark(models.Model):
-    user = models.ManyToManyField(User, default="nikola", editable=False)
-    entry = models.ManyToManyField(Entry)
+    # user = models.ManyToManyField(User, default="nikola", editable=False)
+    # entry = models.ManyToManyField(Entry)
+    # user = models.ForeignKey(User)
+    entry = models.ForeignKey(Entry, null=True)
+    star = models.NullBooleanField()
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        # bookmark = Bookmark.objects.get(pk=1)
+        return str(self.entry)
 
 # class UserProfile():
 #     user = models.OneToOneField(User, related_name='profile')

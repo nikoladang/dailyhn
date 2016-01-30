@@ -26,8 +26,9 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     # url(r'^accounts/profile/', 'dailyhn.views.get_profile', name="user_profile"),
     url(r'^profile/$', 'dailyhn.views.views_news.get_profile', name="user_profile"),
+    url(r'^user/', include('user.urls')),
     url(r'^news/', include('dailyhn.urls.urls_news')),
-    url(r'^user/', include('user.urls'))
+    url(r'^bookmark/', include('dailyhn.urls.urls_bookmark')),
 ]
 
 if settings.DEBUG:
