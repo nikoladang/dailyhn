@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from dailyhn.views.views_bookmark import BookmarkListView
+from dailyhn.views.bookmark_views import BookmarkListView
 
 
 urlpatterns = [

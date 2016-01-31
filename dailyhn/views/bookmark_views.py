@@ -1,6 +1,6 @@
 # from django.shortcuts import render
 from django.views.generic import ListView
-from dailyhn.models import Bookmark
+from ..models import Bookmark
 
 
 class BookmarkListView(ListView):

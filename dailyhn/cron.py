@@ -1,6 +1,6 @@
 from django.utils import timezone
 from datetime import datetime, date
-from dailyhn.views.views_news import get_top_stories_single_day
+from dailyhn.views.entry_views import get_top_stories_single_day
 from dailyhn.models import Entry
 
 

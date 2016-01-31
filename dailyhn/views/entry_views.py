@@ -1,12 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 # from django.conf import settings
 import requests
-from datetime import datetime, date, timedelta
+from datetime import datetime, timedelta
 from operator import itemgetter
-# import json
-from dailyhn.sidebar import get_sidebarDates
-from allauth.socialaccount.models import SocialAccount
 import hashlib
+# import json
+from allauth.socialaccount.models import SocialAccount
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .sidebar import get_sidebarDates
+from ..models import Entry
+from dailyhn.api.serializers import EntrySerializer
 
 # Create your views here.
 # from .forms import SubmitEmbed
@@ -110,5 +114,20 @@ def get_profile(request):
     return render(request, "profile.html", context)
 
 
+@api_view(['GET'])
+def entry_collection(request):
+    if request.method == 'GET':
+        entries = Entry.objects.all()
+        serializer = EntrySerializer(entries, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def entry_element(request, pk):
+    get_object_or_404(Entry, pk=pk)
+
+    if request.method == 'GET':
+        serializer = EntrySerializer(Entry)
+        return Response(serializer.data)
 
 

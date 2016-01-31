@@ -4,4 +4,4 @@
 # https://transfer.sh/
 # https://snakify.org/
 
-default_app_config = 'dailyhn.apps.NewsConfig'
+default_app_config = 'dailyhn.apps.DailyHNConfig'
