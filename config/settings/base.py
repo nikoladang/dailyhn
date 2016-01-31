@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'rest_framework',
     # 'autofixture',
     'django_crontab',
     # my apps
@@ -190,3 +191,12 @@ CRONJOBS = [
     # ('*/5 * * * *', 'dailyhn.cron.my_scheduled_job2', '>> ~/my_scheduled_job.log'), # executed by cron every 1 minutes
     ('*/1 * * * *', 'dailyhn.cron.entries_single_day_cron', '>> ~/my_scheduled_job2.log') # executed by cron every 1 minutes
 ]
+
+# DRF
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

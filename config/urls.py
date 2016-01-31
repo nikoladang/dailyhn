@@ -19,16 +19,34 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.generic.simple import direct_to_template
+from django.contrib.auth.models import User
+from rest_framework import serializers, viewsets, routers
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', 'dailyhn.views.views_news.newsapi_home', name="newsapi_home"),
-    url(r'^accounts/', include('allauth.urls')),
-    # url(r'^accounts/profile/', 'dailyhn.views.get_profile', name="user_profile"),
-    url(r'^profile/$', 'dailyhn.views.views_news.get_profile', name="user_profile"),
-    url(r'^user/', include('user.urls')),
-    url(r'^news/', include('dailyhn.urls.urls_news')),
-    url(r'^bookmark/', include('dailyhn.urls.urls_bookmark')),
+    # url(r'^admin/', admin.site.urls),
+    # url(r'^$', 'dailyhn.views.views_news.newsapi_home', name="newsapi_home"),
+    # url(r'^accounts/', include('allauth.urls')),
+    # # url(r'^accounts/profile/', 'dailyhn.views.get_profile', name="user_profile"),
+    # url(r'^profile/$', 'dailyhn.views.views_news.get_profile', name="user_profile"),
+    # url(r'^user/', include('user.urls')),
+    # url(r'^news/', include('dailyhn.urls.urls_news')),
+    # url(r'^bookmark/', include('dailyhn.urls.urls_bookmark')),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
 if settings.DEBUG:
