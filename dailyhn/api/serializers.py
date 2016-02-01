@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from dailyhn.models import Entry
 
+
 class EntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Entry

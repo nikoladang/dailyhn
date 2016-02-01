@@ -91,7 +91,7 @@ def newsapi_home(request):
     chosenDate = (today-timedelta(days=1))
     sidebarDates = get_sidebarDates(chosenDate,daysGap=7)
     # resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=3)
-    resultList2 = get_top_stories_multi_days(chosenDate, day_count=3, story_count=100)
+    resultList2 = get_top_stories_multi_days(chosenDate, day_count=3, story_count=10)
 
     context = {
         "chosenDate": chosenDate.strftime("%Y-%m-%d"),
