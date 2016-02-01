@@ -22,23 +22,12 @@ from django.conf.urls.static import static
 from django.contrib.auth.models import User
 from rest_framework import serializers, viewsets, routers
 from dailyhn.api.viewsets_entry import EntryViewSet
-from dailyhn import api
+from dailyhn.api.viewsets_user import UserViewSet
+# from dailyhn import api
 
-
-# Serializers define the API representation.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('url', 'username', 'email', 'is_staff')
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 router = routers.DefaultRouter()
-# # router.register(r'users', UserViewSet)
-
+router.register(r'users', UserViewSet)
 router.register(r'entry', EntryViewSet)
 
 urlpatterns = [
@@ -51,12 +40,8 @@ urlpatterns = [
     url(r'^news/', include('dailyhn.urls.entry_urls')),
     url(r'^bookmark/', include('dailyhn.urls.bookmark_urls')),
 
-    url(r'^api/', include(router.urls)),
-    url(r'^api2/', include(api, namespace='api2'))
     # api
-    # url(r'^api/entry/collection/$', 'dailyhn.views.entry_views.entry_collection'),
-    # url(r'^api/entry/element/$', 'dailyhn.views.entry_views.entry_element')
-    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api/', include('dailyhn.apiv1')),
 ]
 
 
