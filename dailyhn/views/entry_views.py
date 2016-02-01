@@ -34,14 +34,29 @@ def get_stories(timestamp1, timestamp2):
 Get top stories from HN with highests points in a specific day
 Return: dict
 '''
-def get_top_stories_single_day(year, month, day, story_count=10):
-    begintime = datetime(year,month,day-1).timestamp()
-    endtime = datetime(year,month,day-1,23,59,59).timestamp()
-    aList = get_stories(begintime,endtime)
+# def get_top_stories_single_day(year, month, day, story_count=10):
+#     begintime = datetime(year,month,day-1).timestamp()
+#     endtime = datetime(year,month,day-1,23,59,59).timestamp()
+#     aList = get_stories(begintime,endtime)
+#     sortedHnValueList = sorted(aList, key=itemgetter('points'), reverse=True)[:story_count]
+#     dictResult = {}
+#     # newdict['hnDate'] = datetime.fromtimestamp(date1).strftime('%Y-%d-%m')
+#     dictResult['hnDate'] = datetime(year,month,day).strftime('%Y-%m-%d')
+#     dictResult['hnValue'] = sortedHnValueList
+#     return dictResult
+def get_top_stories_single_day(aDate, story_count=10):
+    # begintime = datetime(year,month,day-1).timestamp()
+    # endtime = datetime(year,month,day-1,23,59,59).timestamp()
+    previousDate = aDate-timedelta(days=1)
+    beginDatetime = datetime(previousDate.year, previousDate.month, previousDate.day)
+    endDatetime = beginDatetime+timedelta(hours=23, minutes=59, seconds=59)
+    beginTimestamp = beginDatetime.timestamp()
+    endTimestamp = endDatetime.timestamp()
+    aList = get_stories(beginTimestamp,endTimestamp)
     sortedHnValueList = sorted(aList, key=itemgetter('points'), reverse=True)[:story_count]
     dictResult = {}
     # newdict['hnDate'] = datetime.fromtimestamp(date1).strftime('%Y-%d-%m')
-    dictResult['hnDate'] = datetime(year,month,day).strftime('%Y-%m-%d')
+    dictResult['hnDate'] = datetime(aDate.year,aDate.month,aDate.day).strftime('%Y-%m-%d')
     dictResult['hnValue'] = sortedHnValueList
     return dictResult
 
@@ -50,10 +65,16 @@ def get_top_stories_single_day(year, month, day, story_count=10):
 Get top stories from HN with highests points in a specific day
 Return: a list of dicts
 '''
-def get_top_stories_multi_days(year, month, day, day_count=3, story_count=10):
+# def get_top_stories_multi_days(year, month, day, day_count=3, story_count=10):
+#     resultList = []
+#     for i in range(day_count):
+#         resultList.append(get_top_stories_single_day(year,month,day-i, story_count))
+#     return resultList
+def get_top_stories_multi_days(fromDate, day_count=3, story_count=10):
     resultList = []
     for i in range(day_count):
-        resultList.append(get_top_stories_single_day(year,month,day-i, story_count))
+        curDate = fromDate-timedelta(days=i)
+        resultList.append(get_top_stories_single_day(curDate, story_count))
     return resultList
 
 
@@ -66,12 +87,14 @@ def newsapi_home(request):
     # print(json.dumps(newlist, indent=2))
 
 
-    chosenDate = (today-timedelta(days=1)).strftime("%Y-%m-%d")
-    sidebarDates = get_sidebarDates(curYear,curMonth,curDay-1,daysGap=7)
-    resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=3)
+    # chosenDate = (today-timedelta(days=1)).strftime("%Y-%m-%d")
+    chosenDate = (today-timedelta(days=1))
+    sidebarDates = get_sidebarDates(chosenDate,daysGap=7)
+    # resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=3)
+    resultList2 = get_top_stories_multi_days(chosenDate, day_count=3, story_count=100)
 
     context = {
-        "chosenDate": chosenDate,
+        "chosenDate": chosenDate.strftime("%Y-%m-%d"),
         "sidebarDates": sidebarDates,
         "result": resultList2
     }
@@ -80,15 +103,17 @@ def newsapi_home(request):
 
 def newsapi_home_adate(request, year, month, day):
 
-    chosenDate = datetime(int(year),int(month),int(day)).strftime("%Y-%m-%d")
-    sidebarDates = get_sidebarDates(year,month,day,daysGap=7)
-    resultList = get_top_stories_multi_days(int(year), int(month), int(day), day_count=1)
+    # chosenDate = datetime(int(year),int(month),int(day)).strftime("%Y-%m-%d")
+    # sidebarDates = get_sidebarDates(year,month,day,daysGap=7)
+    chosenDate = datetime(int(year),int(month),int(day))
+    print(chosenDate)
+    sidebarDates = get_sidebarDates(chosenDate,daysGap=7)
+    resultList = get_top_stories_multi_days(chosenDate, day_count=1)
 
     print(sidebarDates)
 
-    # print(sidebarDates)
     context = {
-        "chosenDate": chosenDate,
+        "chosenDate": chosenDate.strftime("%Y-%m-%d"),
         "sidebarDates": sidebarDates,
         "result": resultList
     }
