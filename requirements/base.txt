@@ -13,3 +13,4 @@ whitenoise==2.0.6
 psycopg2==2.6.1
 django-crontab==0.7.0
 djangorestframework==3.3.2
+invoke==0.12.0
