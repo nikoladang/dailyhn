@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'autofixture',
     'django_crontab',
+    'authtools',
+    'django_countries',
     # my apps
     'dailyhn',
     'user',
@@ -200,3 +202,6 @@ CRONJOBS = [
 #         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 #     ]
 # }
+
+# django-authtools
+AUTH_USER_MODEL = 'authtools.User'

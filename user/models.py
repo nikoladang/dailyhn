@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, AbstractUser
 )
+from django_countries.fields import CountryField
 # # Create your models here.
 # # genders = ["Male", "Female", "Other"]
 #
@@ -89,10 +90,22 @@ from django.contrib.auth.models import (
 #     def __str__(self):
 #         return ""
 
-# http://www.rawrers.org/?p=867
-class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=100)
-    age = models.CharField(max_length=100)
+# # http://www.rawrers.org/?p=867
+# class Profile(models.Model):
+#     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     first_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
+#     phone = models.CharField(max_length=100)
+#     age = models.CharField(max_length=100)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    country = CountryField()
+    entries_per_day = models.IntegerField(default=10)
+    days_at_homepage = models.IntegerField(default=3)
+    bookmark_icon = models.ImageField(upload_to='bookmakr_icon/%Y/%m/%d')
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.user
