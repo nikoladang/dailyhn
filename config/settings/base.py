@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django_crontab',
     'authtools',
     'django_countries',
+    'sorl.thumbnail',
     # my apps
     'dailyhn',
     'user',
@@ -205,3 +206,6 @@ CRONJOBS = [
 
 # django-authtools
 AUTH_USER_MODEL = 'authtools.User'
+
+# sorl-thumbnail
+THUMBNAIL_DEBUG = True

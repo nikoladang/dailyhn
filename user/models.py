@@ -98,6 +98,7 @@ from django_countries.fields import CountryField
 #     phone = models.CharField(max_length=100)
 #     age = models.CharField(max_length=100)
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     country = CountryField()

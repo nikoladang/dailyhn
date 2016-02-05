@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from .sidebar import get_sidebarDates
 from ..models import Entry
 from dailyhn.api.serializers import EntrySerializer
+from user.models import UserProfile
 
 # Create your views here.
 # from .forms import SubmitEmbed
@@ -120,7 +121,8 @@ def newsapi_home_adate(request, year, month, day):
     return render(request, "news/home2.html", context)
 
 
-def get_profile(request):
+def profile_view(request):
+    profile = ""
     profile_image_url = ""
     if request.user.is_authenticated():
         # print(request.user.id)
@@ -131,8 +133,13 @@ def get_profile(request):
             email_hash = hashlib.md5(request.user.email.strip().lower().encode('utf-8')).hexdigest()
             profile_image_url = "http://www.gravatar.com/avatar/%s" % email_hash + "?s=35&d=identicon&r=PG"
 
+        profile = UserProfile.objects.get(user=request.user)
+        print(profile.country)
+        print(profile.icon_bookmark)
+        # print(profile.country)
 
     context = {
+        "profile": profile,
         "profile_image_url": profile_image_url,
     }
 

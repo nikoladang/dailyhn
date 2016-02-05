@@ -16,3 +16,4 @@ djangorestframework==3.3.2
 invoke==0.12.0
 django-authtools==1.4.0
 django-countries==3.4.1
+sorl-thumbnail==12.3
