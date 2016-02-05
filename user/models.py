@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, AbstractUser
 )
 from django_countries.fields import CountryField
+from sorl.thumbnail import ImageField
 # # Create your models here.
 # # genders = ["Male", "Female", "Other"]
 #
@@ -104,7 +105,8 @@ class UserProfile(models.Model):
     country = CountryField()
     entries_per_day = models.IntegerField(default=10)
     days_at_homepage = models.IntegerField(default=3)
-    icon_symbol = models.ImageField(upload_to='icon_symbol/%Y/%m/%d', blank=True, null=True)
+    # icon_symbol = models.ImageField(upload_to='icon_symbol/%Y/%m/%d', blank=True, null=True)
+    icon_symbol = ImageField(upload_to='icon_symbol/%Y/%m/%d', blank=True, null=True)
     # icon_bookmark = models.ImageField(upload_to='icon_bookmark/%Y/%m/%d', width_field='32', height_field='32' ,blank=True, null=True)
     icon_bookmark = models.ImageField(upload_to='icon_bookmark/%Y/%m/%d', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
