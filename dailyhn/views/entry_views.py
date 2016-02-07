@@ -86,7 +86,9 @@ def newsapi_home(request):
     curDay = today.day
 
     # print(json.dumps(newlist, indent=2))
-
+    if request.user.is_authenticated():
+        profile = UserProfile.objects.get(user=request.user)
+    
 
     # chosenDate = (today-timedelta(days=1)).strftime("%Y-%m-%d")
     chosenDate = (today-timedelta(days=1))
@@ -103,6 +105,9 @@ def newsapi_home(request):
 
 
 def newsapi_home_adate(request, year, month, day):
+
+    if request.user.is_authenticated():
+        profile = UserProfile.objects.get(user=request.user)
 
     # chosenDate = datetime(int(year),int(month),int(day)).strftime("%Y-%m-%d")
     # sidebarDates = get_sidebarDates(year,month,day,daysGap=7)

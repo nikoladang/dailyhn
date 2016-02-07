@@ -12,7 +12,7 @@
 
     <img src="{{ profile_image_url }}" alt="">
     {{ profile.country }}
-{#    <img src="{{ profile.icon_symbol.url }}" alt="">#}
+{#    <img src="{{ profile.icon_bookmark.url }}" alt="">#}
     aaaaaaa
 {#    <img src="{% static 'profile.icon_bookmark' %}" alt="">#}
 {#    {% thumbnail "http://4.bp.blogspot.com/_YweZEYcp_cw/S5DZT1eaMfI/AAAAAAAAAiM/O6FIOU3PDr4/S1600-R/BS+H%E1%BB%92+H%E1%BA%A2I+IMAGE.JPG" "40x40" crop="80% top" as im %}#}
@@ -23,5 +23,9 @@
         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
     {% endthumbnail %}
     ccccccc
+    {% thumbnail profile.icon_bookmark "100x100" crop="center" format="PNG" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
+    <img src="{{ profile.icon_bookmark.url }}" alt="">
 {% endif %}
 {% endblock %}
