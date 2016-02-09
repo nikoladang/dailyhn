@@ -26,6 +26,26 @@
     {% thumbnail profile.icon_bookmark "100x100" crop="center" format="PNG" as im %}
         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
     {% endthumbnail %}
+    {% thumbnail profile.icon_bookmark "100x100" crop="center" format="PNG" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
     <img src="{{ profile.icon_bookmark.url }}" alt="">
+{% endif %}
+{% if profile %}
+    PROFILE
+{% else %}
+    NONE
+{% endif %}
+    </br>
+{% if profile.icon_bookmark %}
+    icon_bookmark is ok
+{% else %}
+    icon_bookmark is NONE
+{% endif %}
+    </br>
+{% if profile.icon_symbol %}
+    icon_symbol is ok
+{% else %}
+    icon_symbol is NONE
 {% endif %}
 {% endblock %}

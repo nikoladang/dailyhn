@@ -36,7 +36,6 @@ def get_sidebarDates(inputDate, daysGap=3):
     # print("daysGap="+str(daysGap))
     # inputDate = datetime(int(year),int(month),int(day))
     curDate = datetime.now().date()
-    print(curDate)
     sidebarDates = []
 
     endRange = daysGap + 1

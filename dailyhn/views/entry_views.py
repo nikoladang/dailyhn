@@ -86,17 +86,23 @@ def newsapi_home(request):
     curDay = today.day
 
     # print(json.dumps(newlist, indent=2))
+    profile = None
+    days_at_homepage = 3
+    entries_per_day = 10
     if request.user.is_authenticated():
         profile = UserProfile.objects.get(user=request.user)
-    
+        print(profile.days_at_homepage)
+        days_at_homepage = profile.days_at_homepage
+        entries_per_day = profile.entries_per_day
 
     # chosenDate = (today-timedelta(days=1)).strftime("%Y-%m-%d")
     chosenDate = (today-timedelta(days=1))
     sidebarDates = get_sidebarDates(chosenDate,daysGap=7)
     # resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=3)
-    resultList2 = get_top_stories_multi_days(chosenDate, day_count=3, story_count=10)
+    resultList2 = get_top_stories_multi_days(chosenDate, day_count=days_at_homepage, story_count=entries_per_day)
 
     context = {
+        "profile": profile,
         "chosenDate": chosenDate.strftime("%Y-%m-%d"),
         "sidebarDates": sidebarDates,
         "result": resultList2
@@ -106,19 +112,21 @@ def newsapi_home(request):
 
 def newsapi_home_adate(request, year, month, day):
 
+    profile = None
+    entries_per_day = 10
     if request.user.is_authenticated():
         profile = UserProfile.objects.get(user=request.user)
+        print(profile.days_at_homepage)
+        entries_per_day = profile.entries_per_day
 
     # chosenDate = datetime(int(year),int(month),int(day)).strftime("%Y-%m-%d")
     # sidebarDates = get_sidebarDates(year,month,day,daysGap=7)
     chosenDate = datetime(int(year),int(month),int(day))
-    print(chosenDate)
     sidebarDates = get_sidebarDates(chosenDate,daysGap=7)
-    resultList = get_top_stories_multi_days(chosenDate, day_count=1)
-
-    print(sidebarDates)
+    resultList = get_top_stories_multi_days(chosenDate, day_count=1, story_count=entries_per_day)
 
     context = {
+        "profile": profile,
         "chosenDate": chosenDate.strftime("%Y-%m-%d"),
         "sidebarDates": sidebarDates,
         "result": resultList

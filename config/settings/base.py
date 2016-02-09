@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'authtools',
     'django_countries',
     'sorl.thumbnail',
+    'fontawesome',
     # my apps
     'dailyhn',
     'user',
