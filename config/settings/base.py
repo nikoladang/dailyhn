@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'django_countries',
     'sorl.thumbnail',
     'fontawesome',
+    'djangular',
     # my apps
     'dailyhn',
     'user',
