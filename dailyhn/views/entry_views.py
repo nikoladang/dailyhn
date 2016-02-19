@@ -87,8 +87,8 @@ def newsapi_home(request):
 
     # print(json.dumps(newlist, indent=2))
     profile = None
-    days_at_homepage = 3
-    entries_per_day = 10
+    days_at_homepage = 3 # default
+    entries_per_day = 10 # default
     if request.user.is_authenticated():
         profile = UserProfile.objects.get(user=request.user)
         print(profile.days_at_homepage)
@@ -113,7 +113,7 @@ def newsapi_home(request):
 def newsapi_home_adate(request, year, month, day):
 
     profile = None
-    entries_per_day = 10
+    entries_per_day = 10 # default
     if request.user.is_authenticated():
         profile = UserProfile.objects.get(user=request.user)
         print(profile.days_at_homepage)

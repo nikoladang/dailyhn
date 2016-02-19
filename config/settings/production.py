@@ -8,6 +8,13 @@ ALLOWED_HOSTS = ["www.dailyhn.com","dailyhn.com","dailyhn.phanthietfood.com","ww
 STATIC_ROOT = os.path.join(BASE_DIR, "../staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR, "../media")
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST =get_secret("EMAIL_HOST")
