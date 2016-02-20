@@ -10,9 +10,9 @@ MEDIA_ROOT = "/Users/loannguyen/.virtualenv/dailyhn/media_in_env"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': get_secret("POSTGRESQL_NAME"),
-        'USER': get_secret("POSTGRESQL_USER"),
-        'PASSWORD': get_secret("POSTGRESQL_PASSWORD"),
+        'NAME': get_secret("POSTGRESQL_NAME_LOCAL"),
+        'USER': get_secret("POSTGRESQL_USER_LOCAL"),
+        'PASSWORD': get_secret("POSTGRESQL_PASSWORD_LOCAL"),
         'HOST': 'localhost',
         'PORT': '',
     }

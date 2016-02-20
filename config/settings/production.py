@@ -8,10 +8,20 @@ ALLOWED_HOSTS = ["www.dailyhn.com","dailyhn.com","dailyhn.phanthietfood.com","ww
 STATIC_ROOT = os.path.join(BASE_DIR, "../staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR, "../media")
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': get_secret("POSTGRESQL_NAME_PRODUCTION"),
+        'USER': get_secret("POSTGRESQL_USER_PRODUCTION"),
+        'PASSWORD': get_secret("POSTGRESQL_PASSWORD_PRODUCTION"),
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
