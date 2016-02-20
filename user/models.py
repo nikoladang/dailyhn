@@ -107,7 +107,7 @@ class UserProfile(models.Model):
     entries_per_day = models.IntegerField(default=10)
     days_at_homepage = models.IntegerField(default=3)
     icon_symbol = models.ImageField(upload_to='icon_symbol/%Y/%m/%d', blank=True, null=True)
-    icon_bookmark = IconField()
+    icon_bookmark = IconField(blank=True, null=True)
     # icon_bookmark = models.ImageField(upload_to='icon_bookmark/%Y/%m/%d', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
