@@ -7,6 +7,8 @@ admin.site.site_title = "DailyHackerNews site admin"
 
 class EntryAdmin(admin.ModelAdmin):
     list_display = ["date", "points", "title", "article_url", "comment_url", "n_bookmarks","created","updated"]
+    list_display_links = ["title"]
+    ordering = ["-date","-points"]
     readonly_fields = ['points','n_bookmarks']
     class Meta:
         model = Entry

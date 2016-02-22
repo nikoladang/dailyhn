@@ -90,6 +90,7 @@ def newsapi_home(request):
     days_at_homepage = 3 # default
     entries_per_day = 10 # default
     if request.user.is_authenticated():
+        print(request.user)
         profile = UserProfile.objects.get(user=request.user)
         print(profile.days_at_homepage)
         days_at_homepage = profile.days_at_homepage
