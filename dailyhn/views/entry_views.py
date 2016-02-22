@@ -91,7 +91,8 @@ def newsapi_home(request):
     entries_per_day = 10 # default
     if request.user.is_authenticated():
         print(request.user)
-        profile = UserProfile.objects.get(user=request.user)
+        # profile = UserProfile.objects.get(user=request.user)
+        profile = get_object_or_404(UserProfile, user=request.user)
         print(profile.days_at_homepage)
         days_at_homepage = profile.days_at_homepage
         entries_per_day = profile.entries_per_day
@@ -116,7 +117,8 @@ def newsapi_home_adate(request, year, month, day):
     profile = None
     entries_per_day = 10 # default
     if request.user.is_authenticated():
-        profile = UserProfile.objects.get(user=request.user)
+        # profile = UserProfile.objects.get(user=request.user)
+        profile = get_object_or_404(UserProfile, user=request.user)
         print(profile.days_at_homepage)
         entries_per_day = profile.entries_per_day
 
