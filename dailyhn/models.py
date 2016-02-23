@@ -29,7 +29,6 @@ class Bookmark(models.Model):
     star = models.NullBooleanField()
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-    description = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         # bookmark = Bookmark.objects.get(pk=1)
