@@ -20,3 +20,5 @@ django-countries==3.4.1
 sorl-thumbnail==12.4a1
 django-fontawesome==0.2.6
 #django-angular==0.7.15
+django-extra-views==0.7.1
+django-vanilla-views==1.0.4
