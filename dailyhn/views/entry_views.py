@@ -46,6 +46,11 @@ Return: dict
 #     dictResult['hnValue'] = sortedHnValueList
 #     return dictResult
 def get_top_stories_single_day(aDate, story_count=10):
+    """
+    :param aDate: <class 'datetime.datetime'>
+    :param story_count:
+    :return:
+    """
     # begintime = datetime(year,month,day-1).timestamp()
     # endtime = datetime(year,month,day-1,23,59,59).timestamp()
     previousDate = aDate-timedelta(days=1)

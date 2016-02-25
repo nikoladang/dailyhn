@@ -1,5 +1,5 @@
 from django.utils import timezone
-from datetime import datetime, date
+from datetime import datetime, timedelta
 from dailyhn.views.entry_views import get_top_stories_single_day
 from dailyhn.models import Entry
 
@@ -9,9 +9,9 @@ def my_scheduled_job2():
     pass
 
 
-def entries_single_day_cron(year, month, day, story_count=10):
+def entries_single_day_cron(aDate, story_count=10):
     print("entries_single_day_cron "+str(datetime.now()))
-    dictResult = get_top_stories_single_day(year,month,day, story_count=10)
+    dictResult = get_top_stories_single_day(aDate, story_count=10)
     hnDate = datetime.strptime(dictResult["hnDate"],"%Y-%m-%d")
     insertList = []
     for value in dictResult["hnValue"]:
@@ -31,11 +31,10 @@ def daily_entry_cron():
     # print("entries_single_day_cron"+str(timezone.now()))
     print("daily_entry_cron "+str(datetime.now()))
     today = datetime.now()
-    curYear = today.year
-    curMonth = today.month
-    curDay = today.day
+    chosenDate = (today-timedelta(days=1))
 
-    entries_single_day_cron(curYear, curMonth, curDay-1, story_count=10)
+    # entries_single_day_cron(curYear, curMonth, curDay-1, story_count=10)
+    entries_single_day_cron(chosenDate)
 
 
 def daily_entry_cron2():
@@ -62,22 +61,22 @@ def daily_entry_cron2():
     return dictResult
 
 
-def entries_single_day_cron2():
-    hnDate = datetime.strptime("2011-11-11","%Y-%m-%d")
-    # e = Entry.objects.create(
-    #     date=date(2016, 1, 10),
-    #     points=100,
-    #     title="A Guide to Seed Fundraising",
-    #     article_url="http://themacro.com/articles/2016/01/how-to-raise-a-seed-round/",
-    #     comment_url="https://news.ycombinator.com/item?id=10868717",
-    # )
-
-    e = Entry.objects.create(
-        date=hnDate,
-        points=100,
-        title="A Guide to Seed Fundraising",
-        article_url="http://themacro.com/articles/2016/01/how-to-raise-a-seed-round/",
-        comment_url="https://news.ycombinator.com/item?id=10868717",
-    )
-    e.save()
+# def entries_single_day_cron2():
+#     hnDate = datetime.strptime("2011-11-11","%Y-%m-%d")
+#     # e = Entry.objects.create(
+#     #     date=date(2016, 1, 10),
+#     #     points=100,
+#     #     title="A Guide to Seed Fundraising",
+#     #     article_url="http://themacro.com/articles/2016/01/how-to-raise-a-seed-round/",
+#     #     comment_url="https://news.ycombinator.com/item?id=10868717",
+#     # )
+#
+#     e = Entry.objects.create(
+#         date=hnDate,
+#         points=100,
+#         title="A Guide to Seed Fundraising",
+#         article_url="http://themacro.com/articles/2016/01/how-to-raise-a-seed-round/",
+#         comment_url="https://news.ycombinator.com/item?id=10868717",
+#     )
+#     e.save()
 
