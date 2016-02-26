@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 # from django.conf import settings
+from django.views.generic.list import ListView
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from operator import itemgetter
 import hashlib
 # import json
@@ -45,6 +46,8 @@ Return: dict
 #     dictResult['hnDate'] = datetime(year,month,day).strftime('%Y-%m-%d')
 #     dictResult['hnValue'] = sortedHnValueList
 #     return dictResult
+
+
 def get_top_stories_single_day(aDate, story_count=10):
     """
     :param aDate: <class 'datetime.datetime'>
@@ -167,20 +170,29 @@ def profile_view(request):
     return render(request, "profile.html", context)
 
 
-@api_view(['GET'])
-def entry_collection(request):
-    if request.method == 'GET':
-        entries = Entry.objects.all()
-        serializer = EntrySerializer(entries, many=True)
-        return Response(serializer.data)
+# @api_view(['GET'])
+# def entry_collection(request):
+#     if request.method == 'GET':
+#         entries = Entry.objects.all()
+#         serializer = EntrySerializer(entries, many=True)
+#         return Response(serializer.data)
+#
+#
+# @api_view(['GET'])
+# def entry_element(request, pk):
+#     get_object_or_404(Entry, pk=pk)
+#
+#     if request.method == 'GET':
+#         serializer = EntrySerializer(Entry)
+#         return Response(serializer.data)
 
 
-@api_view(['GET'])
-def entry_element(request, pk):
-    get_object_or_404(Entry, pk=pk)
+class EntryListView(ListView):
+    model = Entry
+    template_name = "entry_list.html"
 
-    if request.method == 'GET':
-        serializer = EntrySerializer(Entry)
-        return Response(serializer.data)
-
-
+    def get_context_data(self, **kwargs):
+        context = super(EntryListView, self).get_context_data(**kwargs)
+        # context['now'] = datetime.now()
+        print(context)
+        return context

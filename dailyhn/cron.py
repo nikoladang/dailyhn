@@ -4,14 +4,9 @@ from dailyhn.views.entry_views import get_top_stories_single_day
 from dailyhn.models import Entry
 
 
-def my_scheduled_job2():
-    print("crontab2"+str(timezone.now()))
-    pass
-
-
 def entries_single_day_cron(aDate, story_count=10):
     print("entries_single_day_cron "+str(datetime.now()))
-    dictResult = get_top_stories_single_day(aDate, story_count=10)
+    dictResult = get_top_stories_single_day(aDate)
     hnDate = datetime.strptime(dictResult["hnDate"],"%Y-%m-%d")
     insertList = []
     for value in dictResult["hnValue"]:
@@ -34,31 +29,31 @@ def daily_entry_cron():
     chosenDate = (today-timedelta(days=1))
 
     # entries_single_day_cron(curYear, curMonth, curDay-1, story_count=10)
-    entries_single_day_cron(chosenDate)
+    entries_single_day_cron(chosenDate, story_count=10)
 
 
-def daily_entry_cron2():
-    print("entries_single_day_cron"+str(timezone.now()))
-    today = datetime.now()
-    curYear = today.year
-    curMonth = today.month
-    curDay = today.day
-
-    dictResult = get_top_stories_single_day(curYear,curMonth,curDay-1, story_count=10)
-    hnDate = datetime.strptime(dictResult["hnDate"],"%Y-%m-%d")
-    insertList = []
-    for value in dictResult["hnValue"]:
-        print(value["title"])
-        insertList.append(Entry(
-            date = hnDate,
-            points=value["points"],
-            title=value["title"],
-            article_url=value["url"],
-            comment_url="https://news.ycombinator.com/item?id="+value["objectID"],
-        ))
-    Entry.objects.bulk_create(insertList)
-    print(type(hnDate))
-    return dictResult
+# def daily_entry_cron2():
+#     print("entries_single_day_cron"+str(timezone.now()))
+#     today = datetime.now()
+#     curYear = today.year
+#     curMonth = today.month
+#     curDay = today.day
+#
+#     dictResult = get_top_stories_single_day(curYear,curMonth,curDay-1, story_count=10)
+#     hnDate = datetime.strptime(dictResult["hnDate"],"%Y-%m-%d")
+#     insertList = []
+#     for value in dictResult["hnValue"]:
+#         print(value["title"])
+#         insertList.append(Entry(
+#             date = hnDate,
+#             points=value["points"],
+#             title=value["title"],
+#             article_url=value["url"],
+#             comment_url="https://news.ycombinator.com/item?id="+value["objectID"],
+#         ))
+#     Entry.objects.bulk_create(insertList)
+#     print(type(hnDate))
+#     return dictResult
 
 
 # def entries_single_day_cron2():
